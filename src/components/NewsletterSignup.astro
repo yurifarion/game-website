@@ -1,0 +1,82 @@
+---
+import { siteConfig } from "../data/site";
+
+// Swap this once a real Kit.com (ConvertKit) form exists:
+// Grow → Landing Pages & Forms → your form → copy the form ID from the embed snippet.
+const KIT_FORM_ID = siteConfig.kitFormId;
+---
+
+<section id="newsletter" class="section container newsletter">
+  <h2>Get Dev Updates</h2>
+  <p>Subscribe for news on our games — no spam, unsubscribe anytime.</p>
+
+  <form
+    class="signup-form"
+    action={`https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`}
+    method="post"
+  >
+    <label class="sr-only" for="email_address">Email address</label>
+    <input
+      id="email_address"
+      name="email_address"
+      type="email"
+      placeholder="you@example.com"
+      required
+    />
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<style>
+  .newsletter h2 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .newsletter p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  .signup-form {
+    display: flex;
+    gap: var(--space-xs);
+    max-width: 420px;
+  }
+
+  .signup-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+  }
+
+  .signup-form button {
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius);
+    border: none;
+    background: var(--color-accent);
+    color: #062028;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .signup-form button:hover {
+    background: var(--color-accent-strong);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  @media (max-width: 480px) {
+    .signup-form {
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+interface GameData {
+  title: string;
+  slug: string;
+  shortDescription: string;
+  headerImage: string;
+}
+
+interface Props {
+  game: GameData;
+}
+
+const { game } = Astro.props;
+---
+
+<a class="card" href={`/games/${game.slug}/`}>
+  <img src={game.headerImage} width="616" height="353" alt={`${game.title} artwork`} loading="lazy" />
+  <div class="card-body">
+    <h3>{game.title}</h3>
+    <p>{game.shortDescription}</p>
+    <span class="link">Learn more →</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+    transition: border-color 0.15s ease;
+  }
+
+  .card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .card img {
+    aspect-ratio: 616 / 353;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: var(--space-md);
+  }
+
+  .card-body p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  .link {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+</style>

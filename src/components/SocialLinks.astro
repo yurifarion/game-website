@@ -1,0 +1,47 @@
+---
+import { siteConfig } from "../data/site";
+
+const links = [
+  { label: "Twitter / X", href: siteConfig.social.twitter },
+  { label: "Discord", href: siteConfig.social.discord },
+  { label: "YouTube", href: siteConfig.social.youtube },
+  { label: "Instagram", href: siteConfig.social.instagram },
+];
+---
+
+<ul class="social-links">
+  {
+    links.map((link) => (
+      <li>
+        <a href={link.href} target="_blank" rel="noopener noreferrer">
+          {link.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .social-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+  }
+
+  .social-links a {
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .social-links a:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+</style>

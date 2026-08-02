@@ -1,0 +1,26 @@
+---
+import { siteConfig } from "../data/site";
+---
+
+<section id="contact" class="section container contact">
+  <h2>Contact</h2>
+  <p>
+    Press, partnerships, or anything else —
+    <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+  </p>
+</section>
+
+<style>
+  .contact p {
+    color: var(--color-text-muted);
+  }
+
+  .contact a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .contact a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  youtubeId: string;
+}
+
+const { youtubeId } = Astro.props;
+---
+
+<div class="trailer-wrap">
+  <iframe
+    src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+    title="Game trailer"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
+<style>
+  .trailer-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+  }
+
+  .trailer-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>

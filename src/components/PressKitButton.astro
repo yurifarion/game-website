@@ -1,0 +1,11 @@
+---
+import CtaButton from "./CtaButton.astro";
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<CtaButton href={href} label="Press Kit" variant="secondary" />

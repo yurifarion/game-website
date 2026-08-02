@@ -1,0 +1,128 @@
+---
+import TrailerEmbed from "./TrailerEmbed.astro";
+import ScreenshotGallery from "./ScreenshotGallery.astro";
+import PressKitButton from "./PressKitButton.astro";
+import CtaButton from "./CtaButton.astro";
+
+interface GameData {
+  title: string;
+  shortDescription: string;
+  genre: string[];
+  platforms: string[];
+  releaseStatus: string;
+  storeUrl: string;
+  trailerYoutubeId: string;
+  pressKitUrl: string;
+  headerImage: string;
+  screenshots: string[];
+}
+
+interface Props {
+  game: GameData;
+}
+
+const { game } = Astro.props;
+---
+
+<article class="showcase">
+  <section class="hero container">
+    <img class="hero-image" src={game.headerImage} width="616" height="353" alt={`${game.title} header artwork`} />
+    <div class="hero-copy">
+      <p class="status">{game.releaseStatus}</p>
+      <h1>{game.title}</h1>
+      <p class="tagline">{game.shortDescription}</p>
+      <div class="actions">
+        <CtaButton href={game.storeUrl} label="Wishlist / Buy" />
+        <PressKitButton href={game.pressKitUrl} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>Trailer</h2>
+    <TrailerEmbed youtubeId={game.trailerYoutubeId} />
+  </section>
+
+  <section class="section container info-grid">
+    <div>
+      <h2>Genre</h2>
+      <p>{game.genre.join(", ")}</p>
+    </div>
+    <div>
+      <h2>Platforms</h2>
+      <p>{game.platforms.join(", ")}</p>
+    </div>
+    <div>
+      <h2>Status</h2>
+      <p>{game.releaseStatus}</p>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>Screenshots</h2>
+    <ScreenshotGallery images={game.screenshots} gameTitle={game.title} />
+  </section>
+
+  <section class="section container">
+    <slot name="body" />
+  </section>
+</article>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 420px) 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    padding-block: var(--space-xl);
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+  }
+
+  .status {
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    margin: 0 0 var(--space-xs);
+  }
+
+  .tagline {
+    color: var(--color-text-muted);
+    max-width: 46ch;
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .info-grid p {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+</style>

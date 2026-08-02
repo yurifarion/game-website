@@ -1,0 +1,25 @@
+:root {
+  --color-bg: #0b0d12;
+  --color-bg-elevated: #14171f;
+  --color-text: #f2f3f5;
+  --color-text-muted: #a3a8b5;
+  --color-accent: #6ee7ff;
+  --color-accent-strong: #3fd0f0;
+  --color-border: #262b36;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius: 10px;
+  --max-width: 1100px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Breakpoints (reference, used inline in components):
+   mobile:  max-width: 640px
+   tablet:  max-width: 960px
+*/
