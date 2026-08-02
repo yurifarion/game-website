@@ -1,9 +1,9 @@
 export const siteConfig = {
-  studioName: "Placeholder Studio",
+  studioName: "Yuri Farion",
   tagline: "We make games we'd want to play ourselves.",
   contactEmail: "hello@placeholder-domain.com",
   domain: "https://placeholder-domain.com",
-  kitFormId: "PLACEHOLDER_KIT_FORM_ID",
+  kitFormId: "7759a0a05c",
   social: {
     twitter: "https://twitter.com/placeholder",
     discord: "https://discord.gg/placeholder",

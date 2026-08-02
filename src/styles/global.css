@@ -11,10 +11,21 @@ body {
 }
 
 body {
-  background: var(--color-bg);
+  background:
+    radial-gradient(
+      1200px 600px at 15% -10%,
+      color-mix(in srgb, var(--color-accent-2) 10%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 100% 0%,
+      color-mix(in srgb, var(--color-accent) 8%, transparent),
+      transparent 55%
+    ),
+    var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-sans);
-  line-height: 1.5;
+  font-family: var(--font-body);
+  line-height: 1.55;
 }
 
 img {
@@ -29,8 +40,17 @@ a {
 h1,
 h2,
 h3 {
-  line-height: 1.2;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
   margin: 0 0 var(--space-sm);
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.6rem;
 }
 
 .container {
@@ -41,4 +61,14 @@ h3 {
 
 .section {
   padding-block: var(--space-xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--color-accent-2);
 }

@@ -9,6 +9,7 @@ storeUrl: "https://store.steampowered.com/app/PLACEHOLDER_ONE"
 trailerYoutubeId: "dQw4w9WgXcQ"
 pressKitUrl: "https://drive.google.com/drive/folders/PLACEHOLDER_GAME_ONE"
 headerImage: "/images/games/game-one/header-616x353.png"
+heroImage: "/images/games/game-one/hero-1920x1080.png"
 libraryImage: "/images/games/game-one/library-600x900.png"
 screenshots:
   - "/images/games/game-one/screenshots/01-1920x1080.png"

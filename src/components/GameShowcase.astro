@@ -13,7 +13,7 @@ interface GameData {
   storeUrl: string;
   trailerYoutubeId: string;
   pressKitUrl: string;
-  headerImage: string;
+  heroImage: string;
   screenshots: string[];
 }
 
@@ -25,11 +25,11 @@ const { game } = Astro.props;
 ---
 
 <article class="showcase">
-  <section class="hero container">
-    <img class="hero-image" src={game.headerImage} width="616" height="353" alt={`${game.title} header artwork`} />
-    <div class="hero-copy">
+  <section class="hero" style={`--hero-bg: url(${game.heroImage})`}>
+    <div class="hero-scanlines"></div>
+    <div class="hero-content container">
       <p class="status">{game.releaseStatus}</p>
-      <h1>{game.title}</h1>
+      <h1 class="title">{game.title}</h1>
       <p class="tagline">{game.shortDescription}</p>
       <div class="actions">
         <CtaButton href={game.storeUrl} label="Wishlist / Buy" />
@@ -39,62 +39,113 @@ const { game } = Astro.props;
   </section>
 
   <section class="section container">
+    <p class="eyebrow">Watch</p>
     <h2>Trailer</h2>
     <TrailerEmbed youtubeId={game.trailerYoutubeId} />
   </section>
 
   <section class="section container info-grid">
-    <div>
+    <div class="info-card">
       <h2>Genre</h2>
       <p>{game.genre.join(", ")}</p>
     </div>
-    <div>
+    <div class="info-card">
       <h2>Platforms</h2>
       <p>{game.platforms.join(", ")}</p>
     </div>
-    <div>
+    <div class="info-card">
       <h2>Status</h2>
       <p>{game.releaseStatus}</p>
     </div>
   </section>
 
-  <section class="section container">
-    <h2>Screenshots</h2>
-    <ScreenshotGallery images={game.screenshots} gameTitle={game.title} />
+  <section class="section container prose">
+    <slot name="body" />
   </section>
 
   <section class="section container">
-    <slot name="body" />
+    <p class="eyebrow">Gallery</p>
+    <h2>Screenshots</h2>
+    <ScreenshotGallery images={game.screenshots} gameTitle={game.title} />
   </section>
 </article>
 
 <style>
   .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 420px) 1fr;
-    gap: var(--space-lg);
-    align-items: center;
-    padding-block: var(--space-xl);
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: flex-end;
+    background-image: var(--hero-bg);
+    background-size: cover;
+    background-position: center;
+    isolation: isolate;
   }
 
-  .hero-image {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    border: 1px solid var(--color-border);
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(11, 10, 20, 0.15) 0%,
+      rgba(11, 10, 20, 0.55) 55%,
+      var(--color-bg) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-scanlines {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding-block: var(--space-xl) var(--space-lg);
   }
 
   .status {
-    color: var(--color-accent);
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #1a1200;
+    background: var(--color-accent);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.8rem;
-    margin: 0 0 var(--space-xs);
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-pill);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    color: var(--color-text);
+    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+    margin-bottom: var(--space-sm);
   }
 
   .tagline {
     color: var(--color-text-muted);
-    max-width: 46ch;
+    max-width: 52ch;
+    font-size: 1.1rem;
   }
 
   .actions {
@@ -104,25 +155,47 @@ const { game } = Astro.props;
     margin-top: var(--space-md);
   }
 
+  .eyebrow {
+    margin-bottom: var(--space-xs);
+  }
+
   .info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
 
-  .info-grid p {
+  .info-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+  }
+
+  .info-card h2 {
+    font-size: 1rem;
+    color: var(--color-accent-2);
+    margin-bottom: var(--space-xs);
+  }
+
+  .info-card p {
     color: var(--color-text-muted);
     margin: 0;
   }
 
+  .prose :global(p) {
+    color: var(--color-text-muted);
+    max-width: 68ch;
+  }
+
   @media (max-width: 768px) {
     .hero {
-      grid-template-columns: 1fr;
+      min-height: 60vh;
     }
 
     .info-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-md);
+      gap: var(--space-sm);
     }
   }
 </style>

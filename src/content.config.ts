@@ -19,6 +19,7 @@ const games = defineCollection({
     trailerYoutubeId: z.string(),
     pressKitUrl: z.string().url(),
     headerImage: z.string(),
+    heroImage: z.string(),
     libraryImage: z.string(),
     screenshots: z.array(z.string()),
     featured: z.boolean().default(true),

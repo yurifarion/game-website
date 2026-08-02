@@ -1,52 +1,66 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import GameCard from "../components/GameCard.astro";
-import NewsletterSignup from "../components/NewsletterSignup.astro";
+import GameShowcase from "../components/GameShowcase.astro";
+import CtaButton from "../components/CtaButton.astro";
 import ContactSection from "../components/ContactSection.astro";
-import { siteConfig } from "../data/site";
 
-const games = await getCollection("games");
+const [game] = await getCollection("games");
+const { Content } = await render(game);
 ---
 
-<BaseLayout title={siteConfig.studioName} description={siteConfig.tagline}>
+<BaseLayout title={game.data.title} description={game.data.shortDescription}>
   <Header />
 
-  <section class="section container hero">
-    <h1>{siteConfig.studioName}</h1>
-    <p>{siteConfig.tagline}</p>
-  </section>
+  <GameShowcase game={game.data}>
+    <Content slot="body" />
+  </GameShowcase>
 
-  <section class="section container">
-    <h2>Our Games</h2>
-    <div class="game-grid">
-      {games.map((game) => <GameCard game={game.data} />)}
+  <section class="section container newsletter-band">
+    <div class="newsletter-band-inner">
+      <div>
+        <p class="eyebrow">Stay In The Loop</p>
+        <h2>Get Dev Updates</h2>
+        <p class="band-copy">
+          Build logs, playtest invites, and launch news — straight to your
+          inbox.
+        </p>
+      </div>
+      <CtaButton href="/newsletter/" label="Join the Newsletter" />
     </div>
   </section>
 
-  <NewsletterSignup />
   <ContactSection />
 
   <Footer />
 </BaseLayout>
 
 <style>
-  .hero {
-    text-align: center;
-    padding-block: var(--space-xl);
+  .newsletter-band {
+    padding-block: var(--space-lg);
   }
 
-  .hero p {
-    color: var(--color-text-muted);
-    max-width: 50ch;
-    margin-inline: auto;
-  }
-
-  .game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  .newsletter-band-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: var(--space-lg);
+    flex-wrap: wrap;
+    background: var(--color-bg-elevated);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+  }
+
+  .newsletter-band-inner h2 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .band-copy {
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 46ch;
   }
 </style>

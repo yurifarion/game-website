@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import { siteConfig } from "../data/site";
+---
+
+<BaseLayout
+  title="Newsletter"
+  description={`Subscribe for updates from ${siteConfig.studioName}.`}
+>
+  <Header />
+
+  <section class="hero">
+    <div class="hero-scanlines"></div>
+    <div class="hero-content container">
+      <p class="eyebrow">Player One</p>
+      <h1 class="title">Join the Crew</h1>
+      <p class="tagline">
+        Get build updates, playtest invites, and the occasional bad pun —
+        straight from the dev team, no spam.
+      </p>
+    </div>
+  </section>
+
+  <section class="section container">
+    <NewsletterSignup />
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(
+        800px 500px at 80% 20%,
+        color-mix(in srgb, var(--color-accent) 20%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        700px 500px at 10% 80%,
+        color-mix(in srgb, var(--color-accent-2) 18%, transparent),
+        transparent 55%
+      ),
+      var(--color-bg-elevated);
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .hero-scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-block: var(--space-xl);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+    margin-bottom: var(--space-sm);
+  }
+
+  .tagline {
+    color: var(--color-text-muted);
+    max-width: 52ch;
+    font-size: 1.1rem;
+  }
+</style>
