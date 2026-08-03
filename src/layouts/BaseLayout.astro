@@ -7,6 +7,7 @@ import "@fontsource/baloo-2/800.css";
 import "../styles/tokens.css";
 import "../styles/global.css";
 import { siteConfig } from "../data/site";
+import { withBase } from "../utils/url";
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const { title, description = siteConfig.tagline } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
     <meta name="description" content={description} />
     <title>{title} · {siteConfig.studioName}</title>
   </head>

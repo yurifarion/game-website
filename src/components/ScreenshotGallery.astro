@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../utils/url";
+
 interface Props {
   images: string[];
   gameTitle: string;
@@ -17,13 +19,13 @@ const { images, gameTitle } = Astro.props;
           data-dialog-target={`shot-${i}`}
           aria-label={`View screenshot ${i + 1} of ${gameTitle} full size`}
         >
-          <img src={src} width="1920" height="1080" loading="lazy" alt={`${gameTitle} screenshot ${i + 1}`} />
+          <img src={withBase(src)} width="1920" height="1080" loading="lazy" alt={`${gameTitle} screenshot ${i + 1}`} />
         </button>
         <dialog id={`shot-${i}`} class="lightbox">
           <form method="dialog">
             <button class="close" type="submit" aria-label="Close">✕</button>
           </form>
-          <img src={src} width="1920" height="1080" alt={`${gameTitle} screenshot ${i + 1}, full size`} />
+          <img src={withBase(src)} width="1920" height="1080" alt={`${gameTitle} screenshot ${i + 1}, full size`} />
         </dialog>
       </>
     ))

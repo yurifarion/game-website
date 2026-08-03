@@ -1,10 +1,11 @@
 ---
 import { siteConfig } from "../data/site";
+import { withBase } from "../utils/url";
 ---
 
 <header class="site-header">
   <div class="container bar">
-    <a class="logo" href="/">{siteConfig.studioName}</a>
+    <a class="logo" href={withBase("/")}>{siteConfig.studioName}</a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
       <span class="sr-only">Menu</span>
@@ -12,9 +13,9 @@ import { siteConfig } from "../data/site";
     </button>
 
     <nav id="site-nav" class="nav">
-      <a href="/">Home</a>
-      <a href="/newsletter/">Newsletter</a>
-      <a href="/#contact">Contact</a>
+      <a href={withBase("/")}>Home</a>
+      <a href={withBase("/newsletter/")}>Newsletter</a>
+      <a href={withBase("/#contact")}>Contact</a>
     </nav>
   </div>
 </header>

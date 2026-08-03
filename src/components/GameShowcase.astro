@@ -3,6 +3,7 @@ import TrailerEmbed from "./TrailerEmbed.astro";
 import ScreenshotGallery from "./ScreenshotGallery.astro";
 import PressKitButton from "./PressKitButton.astro";
 import CtaButton from "./CtaButton.astro";
+import { withBase } from "../utils/url";
 
 interface GameData {
   title: string;
@@ -25,7 +26,7 @@ const { game } = Astro.props;
 ---
 
 <article class="showcase">
-  <section class="hero" style={`--hero-bg: url(${game.heroImage})`}>
+  <section class="hero" style={`--hero-bg: url(${withBase(game.heroImage)})`}>
     <div class="hero-scanlines"></div>
     <div class="hero-content container">
       <p class="status">{game.releaseStatus}</p>
