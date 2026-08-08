@@ -4,6 +4,12 @@ export const siteConfig = {
   contactEmail: "farion.yuri@gmail.com",
   domain: "https://yurifarion.com",
   kitFormId: "9767185",
+  logo: {
+    src: "/logo.png", // File placed in /public/logo.png
+    alt: "Yuri Farion",
+    width: 750,
+    height: 200,
+  },
   social: {
     twitter: "https://x.com/yuriddeveloper",
     discord: "https://discord.gg/4fMMYvk",

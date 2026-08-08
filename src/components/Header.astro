@@ -5,7 +5,15 @@ import { withBase } from "../utils/url";
 
 <header class="site-header">
   <div class="container bar">
-    <a class="logo" href={withBase("/")}>{siteConfig.studioName}</a>
+    <a class="logo" href={withBase("/")}>
+      <img 
+        src={withBase(siteConfig.logo.src)} 
+        alt={siteConfig.logo.alt || siteConfig.studioName} 
+        width={siteConfig.logo.width} 
+        height={siteConfig.logo.height} 
+        loading="eager"
+      />
+    </a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
       <span class="sr-only">Menu</span>
