@@ -7,8 +7,8 @@ export const siteConfig = {
   logo: {
     src: "/logo.png", // File placed in /public/logo.png
     alt: "Yuri Farion",
-    width: 150,
-    height: 40,
+    width: 375,
+    height: 100,
   },
   social: {
     twitter: "https://x.com/yuriddeveloper",
