@@ -1,7 +1,7 @@
 ---
 title: "Maré"
 slug: "game-one"
-shortDescription: "In a relaxing open world, fish and explore at your own pace. Sell the fish you catch, invest in upgrades for your boat, and discover new areas with more valuable species. The farther you go, the more surprises the ocean reveals."
+shortDescription: "An open-world fishing and exploration game with a relaxing atmosphere and light progression."
 genre: ["Simulation", "Fishing", "Cozy"]
 platforms: ["Windows"]
 releaseStatus: "In Development"
@@ -12,11 +12,12 @@ headerImage: "/images/games/game-one/header-616x353.png"
 heroImage: "/images/games/game-one/hero-1920x1080.png"
 libraryImage: "/images/games/game-one/library-600x900.png"
 screenshots:
-  - "/images/games/game-one/screenshots/01-1920x1080.png"
-  - "/images/games/game-one/screenshots/02-1920x1080.png"
-  - "/images/games/game-one/screenshots/03-1920x1080.png"
+  - "/images/games/game-one/screenshots/01-1920x1080.jpg"
+  - "/images/games/game-one/screenshots/02-1920x1080.jpg"
+  - "/images/games/game-one/screenshots/03-1920x1080.jpg"
 featured: true
 ---
 
-Replace this paragraph with the full game description. This body renders
-below the core info block on the game's page and supports Markdown.
+In a relaxing open world, fish and explore at your own pace. 
+Sell the fish you catch, invest in upgrades for your boat, and discover new areas with more valuable species. 
+The farther you go, the more surprises the ocean reveals.
