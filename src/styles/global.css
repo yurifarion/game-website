@@ -72,3 +72,9 @@ h2 {
   font-size: 0.78rem;
   color: var(--color-accent-2);
 }
+
+.logo img {
+  height: 40px; /* Forces render height to 40px */
+  width: auto;  /* Scales width automatically to prevent distortion */
+  display: block;
+}
