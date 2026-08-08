@@ -1,7 +1,7 @@
 export const siteConfig = {
   studioName: "Yuri Farion",
   tagline: "We make games we'd want to play ourselves.",
-  contactEmail: "farion.yuri@gmail.com",
+  contactEmail: "yuri@yurifarion.com",
   domain: "https://yurifarion.com",
   kitFormId: "9767185",
   logo: {
